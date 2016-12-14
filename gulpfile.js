@@ -44,7 +44,7 @@
     };
   }());
 
-  var MODULE_NAME = 'Books';
+  var MODULE_NAME = 'test';
   var ENV = ['dev', 'qa', 'prod'];
 
   gulp.task('bower-clean', function () {

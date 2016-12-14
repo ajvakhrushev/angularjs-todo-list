@@ -7,10 +7,10 @@
 
   /** @ngInject */
   function Service(
-    KbCommonObserverSvc,
-    KbCommonOrderModelSvc,
-    KbCommonFilterModelSvc,
-    KbCommonRestModelSvc
+    TestCommonObserverSvc,
+    TestCommonOrderModelSvc,
+    TestCommonFilterModelSvc,
+    TestCommonRestModelSvc
   ) {
 
     var Constructor = (function() {
@@ -24,9 +24,9 @@
         this.limit = data.limit || 100;
         this.offset = data.offset || 0;
 
-        this.order = new KbCommonOrderModelSvc(data.order || []);
-        this.filter = new KbCommonFilterModelSvc(data.filter || []);
-        this.rest = new KbCommonRestModelSvc(data.rest || {});
+        this.order = new TestCommonOrderModelSvc(data.order || []);
+        this.filter = new TestCommonFilterModelSvc(data.filter || []);
+        this.rest = new TestCommonRestModelSvc(data.rest || {});
 
         this.fetch = function(data, options) {
           if(!data) {
@@ -79,7 +79,7 @@
 
     }());
 
-    Object.assign(Constructor.prototype, new KbCommonObserverSvc());
+    Object.assign(Constructor.prototype, new TestCommonObserverSvc());
 
     return Constructor;
 

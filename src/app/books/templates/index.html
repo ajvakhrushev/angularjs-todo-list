@@ -1,11 +1,50 @@
-<md-toolbar>
+<md-toolbar class="test-books-dashboard-filter">
   <div class="md-toolbar-tools">
-    <h2 class="md-flex">Map</h2>
-    <div class='kb-sidenav-toggle' ng-click="ctrl.toggleSideRight()">
-      <i class="material-icons">arrow_left</i>
-    </div>
+    <h2 flex>Books List</h2>
+    <md-select
+      ng-model="ctrl.filter.data.category"
+      placeholder="Choose category"
+      ng-change="ctrl.filter.onChange()">
+      <md-option value="category.value" ng-repeat="category in ctrl.categories">{{city.display}}</md-option>
+    </md-select>
+    <md-select
+      ng-model="ctrl.filter.data.genre"
+      placeholder="Choose genre"
+      ng-change="ctrl.filter.onChange()">
+      <md-option value="genre.value" ng-repeat="genre in ctrl.genres">{{city.display}}</md-option>
+    </md-select>
+    <md-input-container class="md-block">
+      <input
+        type="text"
+        ng-model="ctrl.filter.data.search"
+        ng-change="ctrl.filter.onChange()"
+        placeholder="Search by Title or Author"
+        ng-model-options="{debounce: 500}">
+    </md-input-container>
   </div>
 </md-toolbar>
-<kb-common-map-reusable options="ctrl.map" class="fullscreen"></kb-common-map-reusable>
 
-<ng-include src="'/app/branches/dashboard/templates/side-right.html'"></ng-include>
+<div class="test-books-dashboard-list" test-common-infinite-scroll test-common-infinite-scroll-callback='ctrl.loadMore()'>
+  <md-list ng-repeat="item in ctrl.list">
+    <md-list-item>
+      <img class="test-books-dashboard-list-item-cover" src="{{item.cover}}" alt="{{tem.name}}">
+      <div class="md-list-item-text" layout="column">
+        <h3>
+          <a href="/books/{{item.id}}">{{item.name}}</a>
+        </h3>
+        <p>{{item.genre.name}}</p>
+        <p>{{item.display.published}}</p>
+      </div>
+      <div class="md-list-item-text">
+        <p>{{item.genre.category}}</p>
+      </div>
+      <div class="md-list-item-text" flex>
+        <p>{{item.description}}</p>
+      </div>
+      <div class="md-secondary">
+        <i class="material-icons">thumb_up</i>
+        <span>{{item.likes}}</span>
+      </div>
+    </md-list-item>
+  </md-list>
+</div>

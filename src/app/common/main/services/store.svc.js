@@ -7,14 +7,14 @@
 
   /** @ngInject */
   function Service(
-    KbCommonStoreSvc
+    TestCommonStoreSvc
   ) {
 
     this.$get = function () {
       return this;
     };
 
-    return new KbCommonStoreSvc();
+    return new TestCommonStoreSvc();
 
   }
 

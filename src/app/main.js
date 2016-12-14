@@ -9,7 +9,7 @@
       'ngMaterial',
 
       'test.common',
-      'kb.books'
+      'test.books'
     ])
     .config(Config)
     .run(Run)
@@ -22,6 +22,9 @@
     $urlRouterProvider,
     $mdThemingProvider
   ) {
+
+    $locationProvider.html5Mode(true);
+    $urlRouterProvider.otherwise('/404');
 
     Object.assign($httpProvider.defaults.headers.common, {
       "Accept": 'application/json, text/javascript',

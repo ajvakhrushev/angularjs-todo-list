@@ -7,7 +7,7 @@
 
   /** @ngInject */
   function Service(
-    KbCommonObserverSvc
+    TestCommonObserverSvc
   ) {
 
     var Constructor = (function() {
@@ -66,7 +66,7 @@
       };
     };
 
-    Object.assign(Constructor.prototype, new KbCommonObserverSvc());
+    Object.assign(Constructor.prototype, new TestCommonObserverSvc());
 
     return Constructor;
 

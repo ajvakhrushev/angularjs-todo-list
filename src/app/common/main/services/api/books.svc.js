@@ -8,7 +8,7 @@
   /** @ngInject */
   function Service(
     ENV,
-    kbCommonUtilsSvc
+    testCommonUtilsSvc
   ) {
 
     this.$get = function () {
@@ -23,7 +23,7 @@
         "filter": []
       }, data || {});
 
-      return kbCommonUtilsSvc.request.post('/books', params, options || {});
+      return testCommonUtilsSvc.request.post('/books', params, options || {});
     };
 
     this.get = function(data, options) {
@@ -31,7 +31,7 @@
         "id": null
       }, data || {});
 
-      return kbCommonUtilsSvc.request.get('/books/' + params.id, null, options || {});
+      return testCommonUtilsSvc.request.get('/books/' + params.id, null, options || {});
     };
 
     this.create = function(data, options) {
@@ -39,7 +39,7 @@
         "id": null
       }, data || {});
 
-      return kbCommonUtilsSvc.request.post('/books/', params, options || {});
+      return testCommonUtilsSvc.request.post('/books/', params, options || {});
     };
 
     this.update = function(data, options) {
@@ -47,7 +47,7 @@
         "id": null
       }, data || {});
 
-      return kbCommonUtilsSvc.request.put('/books/' + params.id, params, options || {});
+      return testCommonUtilsSvc.request.put('/books/' + params.id, params, options || {});
     };
 
     this.delete = function(data, options) {
@@ -55,7 +55,7 @@
         "id": null
       }, data || {});
 
-      return kbCommonUtilsSvc.request.delete('/books/' + params.id, null, options || {});
+      return testCommonUtilsSvc.request.delete('/books/' + params.id, null, options || {});
     };
 
     return this;

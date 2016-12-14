@@ -27,46 +27,6 @@ const PATH = (function() {
 
 }());
 
-var data = {
-  stable: fetchData(),
-  cache: null
-};
-
-var request = {
-  filter: [],
-  order: [],
-  limit: 0,
-  set: function(data) {
-    this.filter = data.filter || [];
-    this.order = data.order || [];
-    this.limit = data.limit || 0;
-  },
-  isChanged: (function() {
-
-    const makeOnSomeChanges = (next) => (entity) => next.key === entity.key && next.value === entity.value && next.type === entity.type;
-    const makeOnSomeRemoving = (next) => (entity) => next.key === entity.key;
-
-    return function(data) {
-      return  (data.limit !== this.limit) ||
-              !(data.filter.every((next) => this.filter.some(makeOnSomeChanges(next))) && this.filter.every((next) => data.filter.some(makeOnSomeRemoving(next)))) ||
-              !(data.order.every((next) => this.order.some(makeOnSomeChanges(next))) && this.order.every((next) => data.order.some(makeOnSomeRemoving(next))));
-    };
-
-  }())
-};
-
-function fetchData() {
-  return [];
-  // test for 1 000 000 entities
-  // var data1 = JSON.parse(fs.readFileSync(PATH.fixture + '/clients.1.min.json', 'utf8'));
-  // var data2 = JSON.parse(fs.readFileSync(PATH.fixture + '/clients.2.min.json', 'utf8'));
-  // var data = data1.concat(data2);
-  // test for 100 000 entities
-  var data = JSON.parse(fs.readFileSync(PATH.fixture + '/clients.min.json', 'utf8'));
-
-  return data;
-}
-
 // application server
 const app = express();
 
@@ -98,37 +58,7 @@ api.use(( req, res, next ) => {
 });
 
 
-api.post('/list', function (req, res) {
-  if(!!request.isChanged(req.body)) {
-    data.cache = data.stable.slice();
-    request.set(req.body);
-
-    if(req.body.filter.length > 0) {
-      data.cache = data.cache.filter(filter.makeMultiplyFn(req.body.filter));
-    }
-
-    if(req.body.order.length > 0) {
-      data.cache.sort(sort.makeMultiplyFn(req.body.order));
-    }
-  }
-
-  return res.json({
-    list: data.cache.slice(req.body.offset, req.body.offset + req.body.limit),
-    length: data.cache.length
-  });
-});
-
-api.get('/list/:id', function (req, res) {
-  var data = fetchData(),
-      response = data.find((next) => next.id === req.params.id);
-
-  res.json(response);
-});
-
-
-branches(api, {path: PATH});
-currencies(api, {path: PATH});
-products(api, {path: PATH});
+books(api, {path: PATH});
 
 
 api.listen(9000, function () {

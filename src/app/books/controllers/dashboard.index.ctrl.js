@@ -2,78 +2,97 @@
   'use strict';
 
   angular
-    .module('test.books.dashboard')
+    .module('test.books')
     .controller('test.books.dashboard.index.ctrl', Controller);
 
   /** @ngInject */
   function Controller(
     $scope,
+    $filter,
     testCommonUtilsSvc,
     testCommonApiBooksSvc,
+    TestCommonModelSvc,
     testCommonStoreSvc,
     testBooksSvc
   ) {
-    var vm = this;
+    var vm = this,
+        filterDate = $filter('date'),
+        _default = {
+          filter: {
+            category: null,
+            genre: null,
+            search: null
+          }
+        };
 
     this.handlers = {
-      onStoreBranchesItemId: function(id) {
-        var prev = kbBranchesCommonStoreSvc.get('branches.map.item'),
-            next = vm.getBranchesMapData().find(function(next) {
-              return next.id === id;
-            }),
-            list = [mapMarkerDataFn(next)(next)];
-
-        kbBranchesCommonStoreSvc.set('branches.map.item', next);
-
-        if(prev) {
-          list.push(mapMarkerDataFn(next)(prev));
-        }
-
-        kbCommonMapReusableSvc.markers.updateLight(list);
-      },
+      onStoreBooksModelList: function(data) {
+        vm.list = testCommonStoreSvc.get('books.model').list;
+      }
     };
 
-    this.getBranchesMapData = kbBranchesCommonStoreSvc.makeGetter('branches.map.data');
-
-    this.setItem = function(id) {
-      kbBranchesCommonStoreSvc.set('branches.itemId', id);
+    this.filter = {
+      data: _default.filter,
+      onChange: function() {
+        testCommonStoreSvc.set('books.filter', vm.filter.data);
+      }
     };
 
     this.fetch = function() {
-      var item = kbBranchesCommonStoreSvc.get('branches.item'),
-          markers = vm.filterMarkers().map(mapMarkerDataFn(item));
+      var model = testCommonStoreSvc.get('books.model');
 
-      kbCommonMapReusableSvc.markers.set(markers);
-      // kbCommonMapReusableSvc.bounds.set(markers);
+      model.fetch({
+        offset: 0,
+        filter: testBooksSvc.mapFilter(vm.filter.data)
+      });
+    };
+
+    this.loadMore = function() {
+      var model = testCommonStoreSvc.get('books.model');
+
+      return model.fetch({
+        offset: model.offset + model.limit,
+        filter: testBooksSvc.mapFilter(vm.filter.data)
+      });
     };
 
     this.init = function() {
-      kbBranchesCommonStoreSvc.set('branches.filter', {
-        type: ['branch', 'atm', 'cashin'],
-        hasCashIn: false,
-        hasCurrencyExchange: false
-      });
+      testCommonStoreSvc.set('books.model', new TestCommonModelSvc({
+        limit: 20,
+        rest: {
+          fetch: function(data, options) {
+            return testCommonApiBooksSvc.fetch(data, options).then(function(response) {
+              var data = {
+                list: [],
+                length: 0
+              };
 
-      kbBranchesCommonStoreSvc.set('branches.order', {
-        type: 'list',
-        range: undefined,
-        geolocation: undefined
-      });
+              if(response.data) {
+                data.list = response.data.list.map(function(next) {
+                  next.display = {
+                    published: filterDate(next.published, 'dd.MM.yyyy')
+                  };
 
-      kbBranchesCommonStoreSvc.on('branches.itemId', vm.handlers.onStoreBranchesItemId);
-      kbBranchesCommonStoreSvc.on('branches.filter', vm.fetch);
+                  return next;
+                });
+                data.length = response.data.length;
+              }
 
-      kbCommonApiBranchesSvc.readBranchesMapData().then(function(response) {
-        kbBranchesCommonStoreSvc.set('branches.map.data', response.data.data);
-        kbBranchesCommonStoreSvc.set('branches.map.item', null);
+              return data;
+            });
+          }
+        }
+      }));
 
-        vm.fetch();
-      });
+      testCommonStoreSvc.get('books.model').on('list:changed', vm.handlers.onStoreBooksModelList);
+      testCommonStoreSvc.on('books.filter', vm.fetch);
+
+      testCommonStoreSvc.set('books.filter', _default.filter);
     };
 
     $scope.$on('$destroy', function() {
-      kbBranchesCommonStoreSvc.off('branches.itemId', vm.handlers.onStoreBranchesItemId);
-      kbBranchesCommonStoreSvc.off('branches.filter', vm.fetch);
+      testCommonStoreSvc.get('books.model').off('list:changed', vm.handlers.onStoreBooksModelList);
+      testCommonStoreSvc.off('books.filter', vm.fetch);
     });
 
     this.init();
