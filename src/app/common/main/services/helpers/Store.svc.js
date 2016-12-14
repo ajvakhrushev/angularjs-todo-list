@@ -50,11 +50,11 @@
       }
 
       return key.split('.').reduce(function(prev, next) {
-        if(prev !== undefined || prev[next] !== undefined) {
-          prev = prev[next];
+        if(prev === undefined || prev[next] === undefined) {
+          return undefined;
         }
 
-        return prev;
+        return prev[next];
       }, this);
     };
 

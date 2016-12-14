@@ -7,12 +7,22 @@
 
   /** @ngInject */
   function Service(
-    
+    $filter
   ) {
+
+    var filterDate = $filter('date');
 
     this.$get = function () {
       return this;
     };
+
+    this.mapData = function(next) {
+      next.display = {
+        published: filterDate(next.published, 'dd.MM.yyyy')
+      };
+
+      return next;
+    }
 
     this.mapFilter = function(data) {
       var list = [];

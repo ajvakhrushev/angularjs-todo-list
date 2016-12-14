@@ -58,6 +58,14 @@
       return testCommonUtilsSvc.request.delete('/books/' + params.id, null, options || {});
     };
 
+    this.getSuggestions = function(data, options) {
+      var params = Object.assign({
+        "id": null
+      }, data || {});
+
+      return testCommonUtilsSvc.request.get('/books/suggestions/' + params.id, null, options || {});
+    };
+
     this.getGenres = function(data, options) {
       return testCommonUtilsSvc.request.get('/genres', data, options || {});
     };

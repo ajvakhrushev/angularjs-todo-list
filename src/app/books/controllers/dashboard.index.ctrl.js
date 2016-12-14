@@ -9,7 +9,6 @@
   function Controller(
     $scope,
     $q,
-    $filter,
     testCommonUtilsSvc,
     testCommonApiBooksSvc,
     TestCommonModelSvc,
@@ -17,7 +16,6 @@
     testBooksSvc
   ) {
     var vm = this,
-        filterDate = $filter('date'),
         _default = {
           filter: {
             category: null,
@@ -77,13 +75,7 @@
               };
 
               if(response.data) {
-                data.list = response.data.list.map(function(next) {
-                  next.display = {
-                    published: filterDate(next.published, 'dd.MM.yyyy')
-                  };
-
-                  return next;
-                });
+                data.list = response.data.list.map(testBooksSvc.mapData);
                 data.length = response.data.length;
               }
 

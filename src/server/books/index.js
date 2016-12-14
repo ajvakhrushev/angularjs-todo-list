@@ -52,7 +52,7 @@ module.exports = function(app, options) {
 
     data.push(item);
 
-    updateData(PATH.fixture + '/books/books.json', data);
+    utils.updateData(PATH.fixture + '/books/books.json', data);
 
     res.json({
       data: item
@@ -66,7 +66,7 @@ module.exports = function(app, options) {
     if(!!item) {
       Object.assign(item, req.body.data);
 
-      updateData(PATH.fixture + '/books/books.json', data);
+      utils.updateData(PATH.fixture + '/books/books.json', data);
     }
 
     res.json({
@@ -81,11 +81,26 @@ module.exports = function(app, options) {
     if(index >= 0) {
       data.splice(index, 1);
 
-      updateData(PATH.fixture + '/books/books.json', data);
+      utils.updateData(PATH.fixture + '/books/books.json', data);
     }
 
     res.json({
       data: index >= 0
+    });
+  });
+
+  app.get('/books/suggestions/:id', function (req, res) {
+    var data = utils.fetchData(PATH.fixture + '/books/books.json'),
+        item = data.find((next) => next.id === req.params.id);
+
+    data = utils.shuffle(data)
+                .filter((next) => {
+                  return item !== next && next.genre.name === item.genre.name && next.genre.category === item.genre.category;
+                });
+
+    res.json({
+      list: data.length > 3 ? data.slice(0, 3) : data,
+      length: data.length
     });
   });
 

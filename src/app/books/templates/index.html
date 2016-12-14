@@ -26,27 +26,23 @@
   </div>
 </md-toolbar>
 
-<div class="test-books-dashboard-list" test-common-infinite-scroll test-common-infinite-scroll-callback='ctrl.loadMore()'>
+<md-content class="test-books-dashboard-list" test-common-infinite-scroll test-common-infinite-scroll-callback='ctrl.loadMore()'>
   <md-list ng-repeat="item in ctrl.list">
-    <md-list-item>
-      <img class="test-books-dashboard-list-item-cover" src="{{item.cover}}" alt="{{tem.name}}">
+    <md-list-item class="md-3-line">
+      <img class="test-books-dashboard-list-item-cover" src="{{item.cover}}" alt="{{item.name}}">
       <div class="md-list-item-text" layout="column">
         <h3>
           <a href="/books/{{item.id}}">{{item.name}}</a>
         </h3>
-        <p>{{item.genre.name}}</p>
-        <p>{{item.display.published}}</p>
+        <p>{{item.author.name}}</p>
+        <p>Published on {{item.display.published}}</p>
       </div>
-      <div class="md-list-item-text">
-        <p>{{item.genre.category}}</p>
-      </div>
-      <div class="md-list-item-text" flex>
-        <p>{{item.description}}</p>
-      </div>
-      <div class="md-secondary">
-        <i class="material-icons">thumb_up</i>
+      <div class="md-secondary-container">
+        <i class="material-icons md-secondary">thumb_up</i>
         <span>{{item.likes}}</span>
       </div>
     </md-list-item>
   </md-list>
-</div>
+</md-content>
+
+

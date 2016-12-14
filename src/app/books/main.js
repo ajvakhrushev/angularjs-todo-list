@@ -24,6 +24,11 @@
         url: '/books',
         templateUrl: '/app/books/templates/index.html',
         controller: 'test.books.dashboard.index.ctrl as ctrl'
+      }).state({
+        name: 'book',
+        url: '/books/:id',
+        templateUrl: '/app/books/templates/item.html',
+        controller: 'test.books.item.ctrl as ctrl'
       });
 
   }

@@ -41,3 +41,16 @@ ui-view {
   min-height: calc(100vh - 100px);///
   background: $color-gray-50;
 }
+
+md-grid-tile {
+
+  figure {
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+
+  }
+
+}
