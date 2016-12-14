@@ -8,6 +8,7 @@
   /** @ngInject */
   function Controller(
     $scope,
+    $q,
     $filter,
     testCommonUtilsSvc,
     testCommonApiBooksSvc,
@@ -26,7 +27,7 @@
         };
 
     this.handlers = {
-      onStoreBooksModelList: function(data) {
+      onStoreBooksModelList: function() {
         vm.list = testCommonStoreSvc.get('books.model').list;
       }
     };
@@ -57,6 +58,14 @@
     };
 
     this.init = function() {
+      $q.all([
+        testCommonApiBooksSvc.getGenres(),
+        testCommonApiBooksSvc.getCategories()
+      ]).then(function(response) {
+        vm.genres = response[0].data.list;
+        vm.categories = response[1].data.list;
+      });
+
       testCommonStoreSvc.set('books.model', new TestCommonModelSvc({
         limit: 20,
         rest: {

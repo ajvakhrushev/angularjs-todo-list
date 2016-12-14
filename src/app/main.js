@@ -19,8 +19,7 @@
   function Config(
     $httpProvider,
     $locationProvider,
-    $urlRouterProvider,
-    $mdThemingProvider
+    $urlRouterProvider
   ) {
 
     $locationProvider.html5Mode(true);
@@ -66,7 +65,7 @@
       responseError: function(response) {
         var info = response && response.data && response.data.error ? response.data.error : response;
 
-        kbCommonErrorsSvc.processError(info);
+        testCommonErrorsSvc.processError(info);
 
         return $q.reject(response);
       }

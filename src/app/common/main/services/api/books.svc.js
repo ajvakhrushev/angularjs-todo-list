@@ -58,6 +58,14 @@
       return testCommonUtilsSvc.request.delete('/books/' + params.id, null, options || {});
     };
 
+    this.getGenres = function(data, options) {
+      return testCommonUtilsSvc.request.get('/genres', data, options || {});
+    };
+
+    this.getCategories = function(data, options) {
+      return testCommonUtilsSvc.request.get('/categories', data, options || {});
+    };
+
     return this;
 
   }

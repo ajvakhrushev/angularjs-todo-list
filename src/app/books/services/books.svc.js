@@ -21,39 +21,26 @@
         data = {};
       }
 
-      if(data.category) {
-        list.push({
-          key: 'category',
-          category: 'string',
-          type: 'equals',
-          value: data.category
-        });
-      }
+      list.push({
+        key: 'category',
+        category: 'string',
+        type: 'equals',
+        value: data.category ? data.category.toLowerCase() : undefined
+      });
 
-      if(data.genre) {
-        list.push({
-          key: 'genre',
-          category: 'string',
-          type: 'equals',
-          value: data.genre
-        });
-      }
+      list.push({
+        key: 'genre',
+        category: 'string',
+        type: 'equals',
+        value: data.genre ? data.genre.toLowerCase() : undefined
+      });
 
-      if(data.search) {
-        list.push({
-          key: 'title',
-          category: 'string',
-          type: 'contains',
-          value: data.search
-        });
-
-        // list.push({
-        //   key: 'author',
-        //   category: 'string',
-        //   type: 'contains',
-        //   value: data.search
-        // });
-      }
+      list.push({
+        key: 'search',
+        category: 'string',
+        type: 'contains',
+        value: data.search ? data.search.toLowerCase() : undefined
+      });
 
       return list;
     };

@@ -5,9 +5,7 @@
     .module('test.common')
     .directive('testCommonInfiniteScroll', Directive);
 
-  function Directive(
-    $parse
-  ) {
+  function Directive() {
 
     return {
       restrict: 'A',
@@ -16,8 +14,7 @@
       },
       link: function (
         $scope,
-        $element,
-        attrs
+        $element
       ) {
 
         var isLoading = false;

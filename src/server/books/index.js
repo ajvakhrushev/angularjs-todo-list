@@ -13,7 +13,18 @@ module.exports = function(app, options) {
     var data = utils.fetchData(PATH.fixture + '/books/books.json');
 
     if(req.body.filter.length > 0) {
-      data = data.filter(filter.makeMultiplyFn(req.body.filter));
+      var ids = data.map((next) => {
+                      return {
+                        id: next.id,
+                        search: next.name + ' ' + next.author.name,
+                        genre: next.genre.name,
+                        category: next.genre.category
+                      };
+                    })
+                    .filter(filter.makeMultiplyFn(req.body.filter))
+                    .map((next) => next.id);
+
+      data = data.filter((next) => ids.indexOf(next.id) !== -1);
     }
 
     if(req.body.order.length > 0) {
@@ -25,42 +36,6 @@ module.exports = function(app, options) {
       length: data.length
     });
   });
-
-  // app.get('/books/genres', function (req, res) {
-  //   var data = utils.fetchData(PATH.fixture + '/books/books.json'),
-  //       response = data.reduce((prev, next) => {
-  //         if(!prev.some((entity) => next.genre.name === entity)) {
-  //           prev.push(next.genre.name);
-  //         }
-  //         return prev;
-  //       }, []);
-
-  //   response.forEach(function(next, index) {
-  //     next.value = index;
-  //   });
-
-  //   utils.updateData(PATH.fixture + '/books/genres.json', response);
-
-  //   res.json(response);
-  // });
-
-  // app.get('/books/categories', function (req, res) {
-  //   var data = utils.fetchData(PATH.fixture + '/books/books.json'),
-  //       response = data.reduce((prev, next) => {
-  //         if(!prev.some((entity) => next.genre.category === entity)) {
-  //           prev.push(next.genre.category);
-  //         }
-  //         return prev;
-  //       }, []);
-
-  //   response.forEach(function(next, index) {
-  //     next.value = index;
-  //   });
-
-  //   utils.updateData(PATH.fixture + '/books/categories.json', response); 
-
-  //   res.json(response);
-  // });
 
   app.get('/books/:id', function (req, res) {
     var data = utils.fetchData(PATH.fixture + '/books/books.json'),
@@ -113,5 +88,25 @@ module.exports = function(app, options) {
       data: index >= 0
     });
   });
+
+  app.get('/genres', function (req, res) {
+    var data = utils.fetchData(PATH.fixture + '/books/genres.json');
+
+    res.json({
+      list: data,
+      length: data.length
+    });
+  });
+
+  app.get('/categories', function (req, res) {
+    var data = utils.fetchData(PATH.fixture + '/books/categories.json');
+
+    res.json({
+      list: data,
+      length: data.length
+    });
+  });
+
+  
 
 };

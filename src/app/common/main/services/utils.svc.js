@@ -12,6 +12,8 @@
     ENV
   ) {
 
+    var self = this;
+
     this.$get = function () {
       return this;
     };

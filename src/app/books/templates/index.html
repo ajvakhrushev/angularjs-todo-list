@@ -5,13 +5,15 @@
       ng-model="ctrl.filter.data.category"
       placeholder="Choose category"
       ng-change="ctrl.filter.onChange()">
-      <md-option value="category.value" ng-repeat="category in ctrl.categories">{{city.display}}</md-option>
+      <md-option ng-value="null" >All categories</md-option>
+      <md-option ng-value="category" ng-repeat="category in ctrl.categories">{{category}}</md-option>
     </md-select>
     <md-select
       ng-model="ctrl.filter.data.genre"
       placeholder="Choose genre"
       ng-change="ctrl.filter.onChange()">
-      <md-option value="genre.value" ng-repeat="genre in ctrl.genres">{{city.display}}</md-option>
+      <md-option ng-value="null" >All genres</md-option>
+      <md-option ng-value="genre" ng-repeat="genre in ctrl.genres">{{genre}}</md-option>
     </md-select>
     <md-input-container class="md-block">
       <input
