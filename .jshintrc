@@ -1,0 +1,30 @@
+{
+  "globalstrict": true,
+  "bitwise": false,
+  "browser": true,
+  "curly": true,
+  "eqeqeq": true,
+  "esnext": true,
+  "jasmine": true,
+  "noarg": true,
+  "strict": true,
+  "undef": true,
+  "unused": true,
+  "globals": {
+    "agGrid": false,
+    "google": false,
+    "console": false,
+    "angular": false,
+    "describe": false,
+    "it": false,
+    "expect": false,
+    "beforeEach": false,
+    "afterEach": false,
+    "module": false,
+    "moment": false,
+    "inject": false,
+    "spyOn": false,
+    "require": false,
+    "ENV": false
+  }
+}

@@ -1,0 +1,43 @@
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+ui-view {
+  width: 100%;
+}
+
+.kb-container {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.kb-wrapper {
+
+}
+
+.kb-header {
+  background-color: $kb-red;
+  height: 50px;
+}
+
+.kb-footer {
+  background-color: #73797D;
+  height: 50px;
+  color: white;
+}
+
+.kb-layout {
+
+}
+
+.kb-content {
+  display: block;
+  position: relative;
+  min-height: calc(100vh - 100px);///
+  background: $color-gray-50;
+}

@@ -1,0 +1,102 @@
+$color-gray: rgba(153, 149, 139, 1);
+$color-gray-50: rgba(153, 149, 139, 0.5);
+$color-gray-30: rgba(153, 149, 139, 0.3);
+$color-gray-20: rgba(153, 149, 139, 0.2);
+$color-gray-10: rgba(153, 149, 139, 0.1);
+
+$color-blue: rgba(36, 74, 154, 1);
+$color-blue-50: rgba(36, 74, 154, 0.5);
+$color-blue-30: rgba(36, 74, 154, 0.3);
+$color-blue-20: rgba(36, 74, 154, 0.2);
+$color-blue-10: rgba(36, 74, 154, 0.1);
+
+$color-gray-light: #f4f4f3;
+$color-gray-light-2: #e2e1de;
+$color-blue-transparent: rgba(25, 74, 154, 0.75);
+$color-blue-light-transparent: rgba(134, 159, 198, 0.75);
+$color-white-transparent: rgba(255, 255, 255, 0.25);
+$color-red: rgb(221,44,0);
+$color-green: #008000;
+
+// Hold our breakpoint aliases and conditions in a list.
+//
+// These can be invoked later on via the `media-query()` mixin
+$breakpoints: (
+  "portable"      "screen and (max-width: 1023px)",
+  "desk"          "screen and (min-width: 1024px)",
+  "desk-wide"     "screen and (min-width: 1280px)",
+  "full-hd"       "screen and (min-width: 1920px)",
+  "retina"        "(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx)"
+) !default;
+
+
+
+//-------------------- Variables of Colors
+$kb-red: #B30838;
+$kb-red-bright: #EF3E42;
+$kb-red-deep: #830036;
+$kb-pink: #F04B62;
+$kb-red-mid: #D1193D;
+$kb-red-puple: #8C1D40;
+$kb-red-dark: #680026;
+
+@mixin font-light() {
+  font-family: 'SourceSansProLight', sans-serif;
+}
+@mixin font-bold() {
+  font-family: 'SourceSansProBold', sans-serif;
+}
+@function rem($multiplier) {
+  $font-size: 10px;
+  @return $multiplier * $font-size;
+}
+
+$kb-layout-padding: 15px;
+
+//-------------------- Variables for Angular Material
+$font-family: 'SourceSansProRegular', sans-serif;
+//$font-size:   14px;
+$display-4-font-size-base: 11.20rem;
+$display-3-font-size-base: 5.600rem;
+$display-2-font-size-base: 4.500rem;
+$display-1-font-size-base: 3.400rem;
+$headline-font-size-base:  rem(2.400); //2.400rem;
+$title-font-size-base:     rem(2.000); //2.000rem;
+$subhead-font-size-base:   rem(1.600); //1.600rem;
+$body-font-size-base:      rem(1.400); //1.400rem; 14px
+$caption-font-size-base:   rem(1.400); //1.400rem; 14px
+
+
+// Layout
+// ------------------------------
+
+//$baseline-grid:            8px !default;
+//$layout-gutter-width:      ($baseline-grid * 2) !default;
+//
+//$layout-breakpoint-xs:     600px !default;
+//$layout-breakpoint-sm:     960px !default;
+//$layout-breakpoint-md:     1280px !default;
+//$layout-breakpoint-lg:     1920px !default;
+
+// Button
+//$button-left-right-padding: 0.600rem;
+$button-border-radius: 8px;
+//$button-fab-border-radius: 50% !default;
+//$button-icon-border-radius: $button-fab-border-radius !default;
+
+$button-line-height: 3.60rem;
+$button-margin: 0.600rem 0.800rem;
+$button-min-width: 8.800rem;
+
+$button-padding: 0 0.600rem;
+
+
+// Fab Buttons
+// -------------------------------------------
+$button-fab-width: rem(4.800);
+$button-fab-height: rem(4.800);
+//$button-fab-padding: rem(1.60) !default;
+$button-fab-line-height: rem(4.800);
+$button-fab-mini-width: rem(3.20);
+$button-fab-mini-height: rem(3.20);
+$button-fab-mini-line-height: rem(3.20);

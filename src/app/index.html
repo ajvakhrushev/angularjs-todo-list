@@ -1,0 +1,82 @@
+<html lang="en">
+
+  <head>
+    <base href="/">
+
+    <title>Test Books</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link href="/bower_components/angular-material/angular-material.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link href="/assets/styles/css/main.css" rel="stylesheet">
+  </head>
+
+  <body ng-controller="test.index.ctrl as indexCtrl" >
+
+    <div class="kb-wrapper" layout="column">
+      <header class="kb-header" ng-controller="test.common.layout.header.ctrl as headerCtrl">
+        <div class="kb-container" layout="row" layout-align="space-between">
+          <img class="kb-logo" src="http://d2v8ggac1o0f6z.cloudfront.net/gsc/HXF1J1/88/74/97/88749774ebad4262a03517f8977a71d7/images/title_footer_non-registrated/u8.png?token=51c0325fbcd7d0b3ff9354af72487170">
+        </div>
+      </header>
+
+      <div class="kb-layout">
+        <div class="kb-container" layout="row">
+          <ui-view class="kb-content" flex></ui-view>
+        </div>
+      </div>
+
+      <footer class="kb-footer"  layout="row" layout-align="center center" ng-controller="test.common.layout.footer.ctrl as footerCtrl">
+        <div class="kb-container" layout="row" layout-align="center center">
+          
+        </div>
+      </footer>
+    </div>
+
+    <script src="/app/common/main/services/polyfills.js"></script>
+
+    <script src="/bower_components/angular/angular.js"></script>
+    <script src="/bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="/bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="/bower_components/angular-animate/angular-animate.js"></script>
+    <script src="/bower_components/angular-aria/angular-aria.js"></script>
+    <script src="/bower_components/angular-messages/angular-messages.js"></script>
+    <script src="/bower_components/angular-material/angular-material.js"></script>
+
+
+    <script src="/app/main.js"></script>
+    <script src="/app/env.js"></script>
+
+
+    <script src="/app/common/main.js"></script>
+
+    <script src="/app/common/main/services/config.svc.js"></script>
+    <script src="/app/common/main/services/utils.svc.js"></script>
+    <script src="/app/common/main/services/errors.svc.js"></script>
+    <script src="/app/common/main/services/store.svc.js"></script>
+    <script src="/app/common/main/services/helpers/Observer.svc.js"></script>
+    <script src="/app/common/main/services/helpers/Memento.svc.js"></script>
+    <script src="/app/common/main/services/helpers/Store.svc.js"></script>
+    <script src="/app/common/main/services/model/OrderModel.svc.js"></script>
+    <script src="/app/common/main/services/model/FilterModel.svc.js"></script>
+    <script src="/app/common/main/services/model/RestModel.svc.js"></script>
+    <script src="/app/common/main/services/model/Model.svc.js"></script>
+    <script src="/app/common/main/services/api/common.svc.js"></script>
+    <script src="/app/common/main/services/api/books.svc.js"></script>
+
+    <script src="/app/common/layout/main.js"></script>
+    <script src="/app/common/layout/controllers/404.ctrl.js"></script>
+    <script src="/app/common/layout/controllers/header.ctrl.js"></script>
+    <script src="/app/common/layout/controllers/footer.ctrl.js"></script>
+
+
+    <script src="/app/books/main.js"></script>
+    <script src="/app/books/controllers/dashboard.index.ctrl.js"></script>
+    <script src="/app/books/services/books.svc.js"></script>
+  </body>
+
+</html>

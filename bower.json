@@ -1,0 +1,23 @@
+{
+  "name": "Books",
+  "version": "0.0.1",
+  "description": "Books",
+  "author": "https://github.com/andreich2013",
+  "keywords": "Books",
+  "ignore": [
+    "node_modules",
+    "bower_components",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.8",
+    "angular-cookies": "^1.5.8",
+    "angular-i18n": "^1.5.8",
+    "angular-material": "^1.1.1",
+    "angular-sanitize": "^1.5.8",
+    "angular-ui-router": "^1.0.0-beta.3"
+  },
+  "devDependencies": {
+    "angular-mocks": "^1.5.8"
+  }
+}

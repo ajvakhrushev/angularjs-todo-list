@@ -1,0 +1,11 @@
+<md-toolbar>
+  <div class="md-toolbar-tools">
+    <h2 class="md-flex">Map</h2>
+    <div class='kb-sidenav-toggle' ng-click="ctrl.toggleSideRight()">
+      <i class="material-icons">arrow_left</i>
+    </div>
+  </div>
+</md-toolbar>
+<kb-common-map-reusable options="ctrl.map" class="fullscreen"></kb-common-map-reusable>
+
+<ng-include src="'/app/branches/dashboard/templates/side-right.html'"></ng-include>

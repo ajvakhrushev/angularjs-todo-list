@@ -1,0 +1,84 @@
+@import 'variables';
+
+@mixin font-face($style-name, $family) {
+    $filepath: "../../fonts/" + $family + "/" + $family;
+    @font-face {
+        font-family: "#{$style-name}";
+        src: url($filepath + ".eot");
+        src: url($filepath + ".eot?#iefix") format('embedded-opentype'),
+        url($filepath + ".woff") format('woff'),
+        url($filepath + ".ttf")  format('truetype');
+        font-style: normal;
+        font-weight: normal;
+    }
+}
+
+@mixin clearfix() {
+    &:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+}
+@mixin center-block() {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+@mixin text-overflow() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+@mixin cover() {
+  background-size: cover;
+  background-position: center;
+  background-clip:border-box;
+}
+@mixin size($width, $height) {
+  width: $width;
+  height: $height;
+}
+@mixin square($size) {
+  @include size($size, $size);
+}
+//@include circle ();
+@mixin circle($size) {
+  @include size($size, $size);
+  border-radius: 50%;
+}
+
+@mixin media-query($mq) {
+
+  $breakpoint-found: false;
+
+  @each $breakpoint in $breakpoints {
+
+
+    $alias:     nth($breakpoint, 1);
+    $condition: nth($breakpoint, 2);
+
+    @if $mq == $alias and $condition {
+
+      $breakpoint-found: true;
+
+      @media #{$condition} {
+        @content;
+      }
+
+    }
+
+  }
+
+  @if $breakpoint-found == false {
+    @warn "Oops! Breakpoint ‘#{$mq}’ does not exist."
+  }
+
+}
+
+
+@mixin fluid-image () {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}

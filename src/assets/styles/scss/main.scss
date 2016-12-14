@@ -1,0 +1,19 @@
+@import "reset";
+@import 'variables';
+@import 'mixins';
+@import 'books/main';
+
+html {
+  font-size: 10px;
+  @media (max-width: $layout-breakpoint-sm - 1) {
+    font-size: 6px;
+  }
+  @media (min-width: $layout-breakpoint-lg) {
+    font-size: 14px;
+  }
+}
+
+body {
+  font-size: 10px;
+}
+
