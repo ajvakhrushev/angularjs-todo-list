@@ -25,12 +25,6 @@
       }
     };
 
-    this.goToItem = function(value) {
-      if(value) {
-        $state.go('book', {id: value});
-      }
-    };
-
     this.getSuggestions = function(value) {
       testCommonApiBooksSvc.getSuggestions({id: value}).then(function(response) {
         var data = response.data.list.map(testBooksSvc.mapData);
@@ -45,7 +39,7 @@
 
         testCommonStoreSvc.set('books.item', data);
       });
-    }
+    };
 
     this.init = function() {
       testCommonStoreSvc.on('books.item', vm.handlers.onStoreBooksItem);

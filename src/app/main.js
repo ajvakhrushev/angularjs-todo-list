@@ -23,7 +23,7 @@
   ) {
 
     $locationProvider.html5Mode(true);
-    $urlRouterProvider.otherwise('/404');
+    $urlRouterProvider.otherwise('/books');
 
     Object.assign($httpProvider.defaults.headers.common, {
       "Accept": 'application/json, text/javascript',

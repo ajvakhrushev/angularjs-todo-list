@@ -32,13 +32,13 @@ $breakpoints: (
 
 
 //-------------------- Variables of Colors
-$kb-red: #B30838;
-$kb-red-bright: #EF3E42;
-$kb-red-deep: #830036;
-$kb-pink: #F04B62;
-$kb-red-mid: #D1193D;
-$kb-red-puple: #8C1D40;
-$kb-red-dark: #680026;
+$test-red: #B30838;
+$test-red-bright: #EF3E42;
+$test-red-deep: #830036;
+$test-pink: #F04B62;
+$test-red-mid: #D1193D;
+$test-red-puple: #8C1D40;
+$test-red-dark: #680026;
 
 @mixin font-light() {
   font-family: 'SourceSansProLight', sans-serif;
@@ -51,52 +51,4 @@ $kb-red-dark: #680026;
   @return $multiplier * $font-size;
 }
 
-$kb-layout-padding: 15px;
-
-//-------------------- Variables for Angular Material
-$font-family: 'SourceSansProRegular', sans-serif;
-//$font-size:   14px;
-$display-4-font-size-base: 11.20rem;
-$display-3-font-size-base: 5.600rem;
-$display-2-font-size-base: 4.500rem;
-$display-1-font-size-base: 3.400rem;
-$headline-font-size-base:  rem(2.400); //2.400rem;
-$title-font-size-base:     rem(2.000); //2.000rem;
-$subhead-font-size-base:   rem(1.600); //1.600rem;
-$body-font-size-base:      rem(1.400); //1.400rem; 14px
-$caption-font-size-base:   rem(1.400); //1.400rem; 14px
-
-
-// Layout
-// ------------------------------
-
-//$baseline-grid:            8px !default;
-//$layout-gutter-width:      ($baseline-grid * 2) !default;
-//
-//$layout-breakpoint-xs:     600px !default;
-//$layout-breakpoint-sm:     960px !default;
-//$layout-breakpoint-md:     1280px !default;
-//$layout-breakpoint-lg:     1920px !default;
-
-// Button
-//$button-left-right-padding: 0.600rem;
-$button-border-radius: 8px;
-//$button-fab-border-radius: 50% !default;
-//$button-icon-border-radius: $button-fab-border-radius !default;
-
-$button-line-height: 3.60rem;
-$button-margin: 0.600rem 0.800rem;
-$button-min-width: 8.800rem;
-
-$button-padding: 0 0.600rem;
-
-
-// Fab Buttons
-// -------------------------------------------
-$button-fab-width: rem(4.800);
-$button-fab-height: rem(4.800);
-//$button-fab-padding: rem(1.60) !default;
-$button-fab-line-height: rem(4.800);
-$button-fab-mini-width: rem(3.20);
-$button-fab-mini-height: rem(3.20);
-$button-fab-mini-line-height: rem(3.20);
+$test-layout-padding: 15px;

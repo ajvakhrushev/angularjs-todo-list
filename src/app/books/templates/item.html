@@ -1,16 +1,4 @@
 <md-card md-theme="default" md-theme-watch class="_md test-books-dashboard-item">
-  
-  <md-card-title>
-    <md-card-title-text>
-      <span class="md-headline">{{ctrl.item.name}}</span>
-      <span class="md-subhead">{{ctrl.item.genre.name}}, {{ctrl.item.genre.category}}</span>
-    </md-card-title-text>
-    <md-card-title-media>
-      <div class="card-media">
-        <img src="{{ctrl.item.cover}}" alt="{{ctrl.item.name}}">
-      </div>
-    </md-card-title-media>
-  </md-card-title>
   <md-card-header>
     <md-card-avatar>
       <img class="md-user-avatar" src="{{ctrl.item.author.avatar}}" alt="{{ctrl.item.author.name}}">
@@ -22,13 +10,24 @@
   </md-card-header>
   <md-card-title>
     <md-card-title-text>
+      <span class="md-headline">{{ctrl.item.name}}</span>
+      <span class="md-subhead">{{ctrl.item.genre.name}}, {{ctrl.item.genre.category}}</span>
+    </md-card-title-text>
+    <md-card-title-media>
+      <div class="card-media">
+        <img src="{{ctrl.item.cover}}" alt="{{ctrl.item.name}}">
+      </div>
+    </md-card-title-media>
+  </md-card-title>
+  <md-card-title>
+    <md-card-title-text>
       <span class="md-subhead">Introdution</span>
     </md-card-title-text>
   </md-card-title>
   <md-card-content>
     <p ng-repeat="text in ctrl.item.introduction">{{text.content}}</p>
   </md-card-content>
-  <md-card-title>
+  <md-card-title >
     <md-card-title-text>
       <span class="md-subhead">You might also be interested in</span>
     </md-card-title-text>
@@ -37,9 +36,11 @@
     <md-grid-list
         md-cols-xs="1" md-cols-sm="3" md-cols-md="4" md-cols-gt-md="6"
         md-row-height="5:7"
-        md-gutter="12px" md-gutter-gt-sm="5px" >
-      <md-grid-tile ng-repeat="item in ctrl.list" ng-click="ctrl.goToItem(item.id)">
-        <img src="{{item.cover}}" alt="{{item.name}}">
+        md-gutter="20px">
+      <md-grid-tile ng-repeat="item in ctrl.list">
+        <a href="/books/{{item.id}}">
+          <img src="{{item.cover}}" alt="{{item.name}}">
+        </a>
         <md-grid-tile-footer>
           <h3>{{item.name}}</h3>
         </md-grid-tile-footer>

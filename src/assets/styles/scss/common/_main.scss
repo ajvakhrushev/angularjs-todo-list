@@ -9,37 +9,55 @@ ui-view {
   width: 100%;
 }
 
-.kb-container {
+md-input-container .md-errors-spacer {
+  height: 0;
+  min-height: 0;
+  padding: 0;
+}
+
+.test-container {
   margin-right: auto;
   margin-left: auto;
   padding-left: 10%;
   padding-right: 10%;
 }
 
-.kb-wrapper {
+.test-wrapper {
 
 }
 
-.kb-header {
-  background-color: $kb-red;
+.test-header {
+  background-color: $test-red;
   height: 50px;
+  color: #fff;
+  font-size: 1.6rem;
+  line-height: 50px;
+
+  a {
+    color: #fff;
+  }
+
+  .test-logo {
+    height: 40px;
+    width: 40px;
+    margin: 5px 40px 0 20px;
+  }
 }
 
-.kb-footer {
+.test-footer {
   background-color: #73797D;
   height: 50px;
   color: white;
 }
 
-.kb-layout {
+.test-layout {
 
 }
 
-.kb-content {
+.test-content {
   display: block;
   position: relative;
   min-height: calc(100vh - 100px);///
-  background: $color-gray-50;
 }
 
 md-grid-tile {

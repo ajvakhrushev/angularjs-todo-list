@@ -22,7 +22,7 @@
       };
 
       return next;
-    }
+    };
 
     this.mapFilter = function(data) {
       var list = [];
