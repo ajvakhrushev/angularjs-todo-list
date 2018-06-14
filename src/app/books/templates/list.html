@@ -1,16 +1,16 @@
 <md-list ng-repeat="item in ctrl.list">
-    <md-list-item class="md-3-line">
-      <img class="test-books-dashboard-list-item-cover" src="{{item.cover}}" alt="{{item.name}}">
-      <div class="md-list-item-text" layout="column">
-        <h3>
-          <a href="/books/{{item.id}}">{{item.name}}</a>
-        </h3>
-        <p>{{item.author.name}}</p>
-        <p>Published on {{item.display.published}}</p>
-      </div>
-      <div class="md-secondary-container">
-        <i class="material-icons md-secondary">thumb_up</i>
-        <span>{{item.likes}}</span>
-      </div>
-    </md-list-item>
-  </md-list>
+  <md-list-item class="md-3-line">
+    <img class="test-books-dashboard-list-item-cover" src="{{item.cover}}" alt="{{item.name}}">
+    <div class="md-list-item-text" layout="column">
+      <h3>
+        <a href="/books/{{item.id}}">{{item.name}}</a>
+      </h3>
+      <p>{{item.author.name}}</p>
+      <p>Published on {{item.display.published}}</p>
+    </div>
+    <div class="md-secondary-container">
+      <i class="material-icons md-secondary">thumb_up</i>
+      <span>{{item.likes}}</span>
+    </div>
+  </md-list-item>
+</md-list>

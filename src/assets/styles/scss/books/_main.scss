@@ -1,5 +1,16 @@
+@import '../variables';
+
 .test-books-dashboard-filter {
   height: 60px;
+
+  md-input-container {
+
+    .md-input {
+      color: $color-white-gray;
+    }
+
+  }
+
 }
 
 .test-books-dashboard-list {

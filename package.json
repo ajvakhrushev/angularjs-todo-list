@@ -1,11 +1,11 @@
 {
-  "name": "KapitalBank",
+  "name": "angularjs-todo-list",
   "version": "0.0.1",
-  "description": "Kapital Bank",
-  "author": "https://www.scnsoft.com/",
-  "keywords": "Kapital Bank",
   "scripts": {
-    "start": "node ./src/server/index.js"
+    "build": "gulp build",
+    "postinstall": "gulp install",
+    "start": "node src/server/app",
+    "start:dev": "node src/server"
   },
   "devDependencies": {
     "body-parser": "^1.15.2",
@@ -26,10 +26,11 @@
     "gulp-ng-constant": "^1.1.0",
     "gulp-plumber": "^1.1.0",
     "gulp-rename": "^1.2.2",
+    "gulp-replace": "^0.5.4",
     "gulp-rev": "^7.1.0",
     "gulp-rev-format": "^1.0.4",
     "gulp-rev-replace": "^0.4.3",
-    "gulp-sass": "^2.3.2",
+    "gulp-sass": "^4.0.1",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-svg-sprite": "^1.3.6",
     "gulp-svgmin": "^1.2.3",
@@ -37,7 +38,7 @@
     "jshint": "^2.9.2",
     "node-json-minify": "^1.0.0"
   },
-  "dependencies": {
-    "gulp-replace": "^0.5.4"
+  "engines": {
+    "python": "2.7.15"
   }
 }

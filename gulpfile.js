@@ -108,9 +108,10 @@
     'ng-constant'
   ]);
 
-  gulp.task('build', function() {
-
-  });
+  gulp.task('build', [
+    'js-dev',
+    'scss-compile'
+  ]);
 
   gulp.task('test', function() {  
 
