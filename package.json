@@ -4,7 +4,7 @@
   "scripts": {
     "build": "gulp build",
     "postinstall": "gulp install",
-    "start": "node src/server/app",
+    "start": "node src/server/api",
     "start:dev": "node src/server"
   },
   "devDependencies": {
