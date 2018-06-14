@@ -2,7 +2,7 @@
   "name": "angularjs-todo-list",
   "version": "0.0.1",
   "scripts": {
-    "build": "gulp build",
+    "build": "gulp ng-constant --prod && gulp build --prod",
     "postinstall": "gulp install",
     "start": "node src/server/app",
     "start:dev": "node src/server"
