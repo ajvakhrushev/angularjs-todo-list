@@ -45,6 +45,7 @@
   }());
 
   var MODULE_NAME = 'test';
+  var ENV_ARGS = ['--dev', '--qa', '--prod'];
   var ENV = ['dev', 'qa', 'prod'];
 
   gulp.task('bower-clean', function () {
@@ -57,8 +58,17 @@
   });
 
   gulp.task('ng-constant', function () {
-    var tmp = ENV.indexOf(process.env),
-        env = tmp !== -1 ? ENV[tmp] : 'dev';
+    var env = ENV[0];
+
+    for(let i = 0, length = process.argv.length; i <= length; i++) {
+      let tmpIndex = ENV_ARGS.indexOf(process.argv[i]);
+
+      if (tmpIndex !== -1) {
+        env = ENV[tmpIndex];
+
+        break;
+      }
+    }
 
     return ngConstant({
         name: MODULE_NAME,
